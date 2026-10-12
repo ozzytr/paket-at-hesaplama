@@ -1,0 +1,334 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), sans-serif;
+  --font-heading: var(--font-manrope), sans-serif;
+  --font-mono: var(--font-dm-sans), monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2rem;
+}
+
+:root,
+.dark {
+  color-scheme: dark;
+  --background: #121414;
+  --foreground: #f4f4f0;
+  --card: #1c1e1e;
+  --muted-foreground: #a1a5a3;
+  --primary: #ff784b;
+  --primary-foreground: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --secondary: var(--card);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--card);
+  --accent: var(--card);
+  --accent-foreground: var(--foreground);
+  --destructive: var(--primary);
+  --border: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --input: color-mix(in srgb, var(--foreground) 16%, transparent);
+  --ring: var(--primary);
+  --chart-1: var(--primary);
+  --chart-2: color-mix(in srgb, var(--primary) 25%, var(--card));
+  --chart-3: var(--muted-foreground);
+  --chart-4: var(--foreground);
+  --chart-5: var(--card);
+  --radius: 0.75rem;
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--card);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    line-height: 1.6;
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  a,
+  button,
+  input {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 5px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-manrope), sans-serif;
+  }
+}
+
+.site-container {
+  width: min(1240px, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: 6.5rem;
+}
+
+.eyebrow {
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.section-description {
+  max-width: 35rem;
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.hero-title {
+  font-size: clamp(3.25rem, 5.3vw, 4.65rem);
+  font-weight: 750;
+  letter-spacing: -0.058em;
+  line-height: 1.1;
+}
+
+.hero-photo {
+  position: relative;
+  min-height: 530px;
+  border-radius: 1.5rem;
+  isolation: isolate;
+}
+
+.hero-photo > img {
+  border-radius: inherit;
+}
+
+.photo-shade {
+  background: linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--background) 90%, transparent));
+}
+
+.hero-copy > *,
+.hero-photo {
+  animation: enter-page 700ms both;
+}
+
+.hero-copy > :nth-child(2) { animation-delay: 70ms; }
+.hero-copy > :nth-child(3) { animation-delay: 140ms; }
+.hero-copy > :nth-child(4) { animation-delay: 210ms; }
+.hero-copy > :nth-child(5) { animation-delay: 280ms; }
+.hero-photo { animation-delay: 100ms; }
+
+@keyframes enter-page {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.product-shell {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--card);
+  color: var(--card-foreground);
+  box-shadow: 0 24px 70px color-mix(in srgb, var(--background) 60%, transparent);
+}
+
+.dashboard-stat {
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  background: var(--background);
+  color: var(--foreground);
+  padding: 1.25rem;
+}
+
+.dashboard-stat-highlight {
+  border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+  background: color-mix(in srgb, var(--primary) 7%, var(--background));
+  color: var(--foreground);
+}
+
+.dashboard-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  text-align: left;
+  transition: color 180ms, background 180ms;
+}
+
+.dashboard-link:hover {
+  background: var(--card);
+  color: var(--foreground);
+}
+
+.dashboard-link[aria-current='page'] {
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+}
+
+.gallery-card img {
+  transition: transform 650ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.045);
+}
+
+.price-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+  color: var(--card-foreground);
+  padding: 2rem;
+}
+
+.price-card-featured {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 3%, var(--card));
+  color: var(--card-foreground);
+}
+
+.faq-list [data-slot='accordion-trigger'] {
+  padding-block: 1.6rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.faq-list [data-slot='accordion-trigger']:hover {
+  color: var(--primary);
+}
+
+.faq-list [data-slot='accordion-content'] > div {
+  padding-bottom: 1.5rem;
+  padding-right: 2rem;
+  color: var(--muted-foreground);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+[data-slot='dialog-content'] {
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+[data-slot='dialog-title'] {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.375rem;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+[data-slot='dialog-description'] {
+  line-height: 1.7;
+}
+
+[data-slot='chart'] {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 1024px) {
+  .site-container { width: min(1240px, calc(100% - 6rem)); }
+}
+
+@media (max-width: 767px) {
+  .site-container { width: calc(100% - 2.5rem); }
+  .section-space { padding-block: 4.5rem; }
+  .hero-title { font-size: clamp(2.8rem, 10.5vw, 4.3rem); }
+  .hero-photo { min-height: 400px; }
+  .price-card { padding: 1.5rem; }
+  .dashboard-stat { padding: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
