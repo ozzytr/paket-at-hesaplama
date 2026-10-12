@@ -1,6 +1,8 @@
 # paket-at-hesaplama
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A project for couriers and package delivery personnel that tracks daily income and expenses to show exactly how much they earn.
+
+This is a [Next.js](https://nextjs.org) project bootstrapped.
 
 ## Built with v0
 
